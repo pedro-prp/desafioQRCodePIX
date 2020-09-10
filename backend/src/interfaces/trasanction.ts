@@ -1,6 +1,6 @@
 interface transactionInterface {
-    companyName: string;
-    cnpj: string;
+    payerIdentifier: string;
+    recieverIdentifier: string;
     value: number;
   }
    
