@@ -7,9 +7,11 @@ const transactionRouter = Router();
 
 transactionRouter.post('/', async (request, response) => {
   try {
-    var obj = new transactionController()
 
-    return response.status(200).json(obj.createQRcode())
+    var data: transactionInterface = request.body;
+    var transactionObj = new transactionController()
+
+    return response.status(200).json(transactionObj.createQRcode(data))
   } catch (err) {
     return response.status(400).json({ error: err.message });
   }

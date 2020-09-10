@@ -1,6 +1,9 @@
+import transactionInterface from '../interfaces/transactionInterface'
+
 class transactionController {
-    public createQRcode = () => {
-        return ({'qrcode': 'hello controllers'})
+
+    public createQRcode = (data: transactionInterface) => {
+        return ({'qrcode': data})
     }
 }
  
