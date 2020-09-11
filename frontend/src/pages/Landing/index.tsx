@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../../services/api';
 import { useHistory } from 'react-router-dom';
+import './styles.css';
 
 const Landing: React.FC = () => {
     const history = useHistory();
@@ -22,22 +23,29 @@ const Landing: React.FC = () => {
     };
 
     return (
-        <div id="page-landing">
-            <div className="Input">
-                <div>
-                    <p>Payer ID</p>
-                    <input type="text" id='payer-id' name='Payer ID' />
-                </div>
-                <div>
-                    <p>Receiver ID</p>
-                    <input type="text" id='receiver-id' name='Receiver ID' />
-                </div>
-                <div>
-                    <p>Value</p>
-                    <input type="text" id='value' name='value' />
-                </div>
-            </div>
-            <button onClick={createQRCode}>Generate QR code</button>
+        <div id="landing" className="container">
+                <form id="payment-form">
+                    <div className="input-block">
+                        <label htmlFor="time">Payer ID</label>
+                        <input type="text" id="payer-id" />
+                    </div>
+
+                    <div className="input-block">
+                        <label htmlFor="week_day">Receiver ID</label>
+                        <input type="text" id="receiver-id" />
+                    </div>
+                    <div className="input-block">
+                        <label htmlFor="week_day">Value</label>
+                        <input type="text" id="value" />
+                    </div>
+                    <div className="button-container">
+                        <a onClick={createQRCode} className="generate-qrcode">
+                            Generate QR code
+                        </a>
+                    </div>
+
+                   
+                </form>
         </div>
     )
 };
