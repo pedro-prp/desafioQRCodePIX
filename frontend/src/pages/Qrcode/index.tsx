@@ -1,15 +1,15 @@
 import React from 'react';
 import { useLocation } from 'react-router';
+import QRCode from 'qrcode.react';
 
-interface qrCodeProps {
-    qrCodeString: string;
-}
 
-const QRcode: React.FC<qrCodeProps> = (props) => {
+const QRcode: React.FC = (props) => {
     const { state: { qrCodeString } } = useLocation();
 
+    console.log(qrCodeString);
+
     return (
-    <h1>{qrCodeString}</h1>
+        <QRCode value={ qrCodeString } />
     )
 };
 
