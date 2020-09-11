@@ -1,7 +1,9 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import api from '../../services/api';
+import { useHistory } from 'react-router-dom';
 
 const Landing: React.FC = () => {
+    const history = useHistory();
 
     const createQRCode = async () => {
         const body = {
@@ -11,9 +13,12 @@ const Landing: React.FC = () => {
 
         }
 
-        const qrcodeString = await api.post('/transactions', body);
+        const response = await api.post('/transactions', body);
 
-        console.log(qrcodeString['data']['qrCodeString']);
+        history.push({
+            pathname: '/qrcode',
+            state: {qrCodeString: response['data']['qrCodeString']}
+        });
     };
 
     return (
@@ -35,6 +40,6 @@ const Landing: React.FC = () => {
             <button onClick={createQRCode}>Generate QR code</button>
         </div>
     )
-}
+};
 
 export default Landing;
