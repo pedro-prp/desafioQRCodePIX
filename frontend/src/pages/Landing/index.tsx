@@ -3,12 +3,17 @@ import api from '../../services/api';
 
 const Landing: React.FC = () => {
 
-    const createQRCode = (): void => {
-        let payer = (document.getElementById('payer-id') as HTMLInputElement).value
-        let receiver = (document.getElementById('receiver-id') as HTMLInputElement).value
-        let value = (document.getElementById('value') as HTMLInputElement).value
+    const createQRCode = async () => {
+        const body = {
+            payer: (document.getElementById('payer-id') as HTMLInputElement).value,
+            receiver: (document.getElementById('receiver-id') as HTMLInputElement).value,
+            value: (document.getElementById('value') as HTMLInputElement).value
 
-        console.log(payer + receiver + value);
+        }
+
+        const qrcodeString = await api.post('/transactions', body);
+
+        console.log(qrcodeString['data']['qrCodeString']);
     };
 
     return (
