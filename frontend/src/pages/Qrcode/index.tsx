@@ -9,7 +9,7 @@ const QRcode: React.FC = (props) => {
     console.log(qrCodeString);
 
     return (
-        <QRCode value={ qrCodeString } />
+        <QRCode value={ qrCodeString } size={350} />
     )
 };
 
